@@ -10,4 +10,4 @@
 1. [Очередь](https://github.com/111nat/unn-sum-winter-2020/blob/master/Очередь/Source.cpp)
 1. [Матрица](https://github.com/111nat/unn-sum-winter-2020/blob/master/Матрицы/Source.cpp)
 
-## [Отчеты](https://github.com/111nat/unn-sum-winter-2020/tree/master/Отчеты/Отчет%20по%20польской%20записи)
+## [Отчеты](https://github.com/111nat/unn-sum-winter-2020/tree/master/Отчеты)
