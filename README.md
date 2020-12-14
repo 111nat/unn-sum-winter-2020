@@ -1,10 +1,10 @@
 # **Программирование 2 курс (first)**
 
-##Лабораторные и домашки
+## Лабораторные и домашки
 
-1. Стек
-1. Стек на списке
-1. Польская запись
+1. [Стек](https://github.com/111nat/unn-sum-winter-2020/blob/master/Стек/Source.cpp)
+1. [Стек на списке](https://github.com/111nat/unn-sum-winter-2020/blob/master/Стек%20на%20списке/Source.cpp)
+1. [Польская запись](https://github.com/111nat/unn-sum-winter-2020/blob/master/Польская%20запись/Source.cpp)
 1. Список
-1. Очередь
-1. Матрица
+1. [Очередь](https://github.com/111nat/unn-sum-winter-2020/blob/master/Очередь/Source.cpp)
+1. [Матрица](https://github.com/111nat/unn-sum-winter-2020/blob/master/Матрицы/Source.cpp)
