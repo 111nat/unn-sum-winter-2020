@@ -10,11 +10,11 @@ string open_file(string path)
 
 	if (!harry_1.is_open())
 	{
-		cout << "Îøèáêà îòêðûòèÿ ôàéëà!" << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ° Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚Ð¸Ñ Ñ„Ð°Ð¹Ð»Ð°!" << endl;
 	}
 	else
 	{
-		cout << "Ôàéë îòêðûò!" << endl;
+		cout << "Ð¤Ð°Ð¹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ñ‚!" << endl;
 		
 		char ch;
 		while (harry_1.get(ch))
@@ -166,8 +166,8 @@ string hierarchy::print_book(int book)
 {
 	if (book > size_book)
 	{
-		cout << "Îøèáêà! Ãëàâ ìåíüøå." << endl;
-		cout << "Âñåãî ãëàâ: " << size_book << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð“Ð»Ð°Ð² Ð¼ÐµÐ½ÑŒÑˆÐµ." << endl;
+		cout << "Ð’ÑÐµÐ³Ð¾ Ð³Ð»Ð°Ð²: " << size_book << endl;
 	}
 	else
 	{
@@ -183,7 +183,7 @@ string hierarchy::print_book(int book)
 			current = current->pNext;
 			counter++;
 		}
-		cout << "Îøèáêà! Ãëàâà íå íàéäåíà" << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð“Ð»Ð°Ð²Ð° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°" << endl;
 	}
 }
 
@@ -191,15 +191,15 @@ string hierarchy::print_string(int book, int stringg)
 {
 	if (book > size_book)
 	{
-		cout << "Îøèáêà! Êíèã ìåíüøå." << endl;
-		cout << "Âñåãî Êíèã: " << size_book << endl;
+		cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! ÐšÐ½Ð¸Ð³ Ð¼ÐµÐ½ÑŒÑˆÐµ." << endl;
+		cout << "Ð’ÑÐµÐ³Ð¾ ÐšÐ½Ð¸Ð³: " << size_book << endl;
 	}
 	else
 	{
 		if (stringg > size_string)
 		{
-			cout << "Îøèáêà! Ñòðîê ìåíüøå." << endl;
-			cout << "Âñåãî ñòðîê: " << size_string << endl;
+			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð¡Ñ‚Ñ€Ð¾Ðº Ð¼ÐµÐ½ÑŒÑˆÐµ." << endl;
+			cout << "Ð’ÑÐµÐ³Ð¾ ÑÑ‚Ñ€Ð¾Ðº: " << size_string << endl;
 		}
 		else
 		{
@@ -222,13 +222,13 @@ string hierarchy::print_string(int book, int stringg)
 						current = current->pNext;
 						counter_s++;
 					}
-					cout << "Îøèáêà! Ñòðîêà íå íàéäåíà" << endl;
+					cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð¡Ñ‚Ñ€Ð¾ÐºÐ° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°" << endl;
 					return string();
 				}
 				current = current->pNext;
 				counter_c++;
 			}
-			cout << "Îøèáêà! Ãëàâà íå íàéäåíà" << endl;
+			cout << "ÐžÑˆÐ¸Ð±ÐºÐ°! Ð“Ð»Ð°Ð²Ð° Ð½Ðµ Ð½Ð°Ð¹Ð´ÐµÐ½Ð°" << endl;
 		}
 	}
 }
@@ -247,7 +247,7 @@ hierarchy list;
 void plus_books()
 {
 	string PATH = string();
-	cout << "Ââåäèòå êíèãó .txt" << endl;
+	cout << "Ð’Ð²ÐµÐ´Ð¸Ñ‚Ðµ ÐºÐ½Ð¸Ð³Ñƒ .txt" << endl;
 	cin >> PATH;
 	PATH = PATH + ".txt";
 	
@@ -307,14 +307,14 @@ int main()
 		{
 			if (open_file("HP.txt") != string())
 			{
-				cout << "Íàéäåí HP" << endl;
-				cout << "Ïðîäîëæèì?" << endl;
+				cout << "ÐÐ°Ð¹Ð´ÐµÐ½ HP" << endl;
+				cout << "ÐŸÑ€Ð¾Ð´Ð¾Ð»Ð¶Ð¸Ð¼?" << endl;
 				cout << "1 for yes   or   0 for no" << endl;
 				cin >> exit;
 				if (exit != 0 && exit != 1)
 				{
 					exit = 0;
-					cout << "Çíà÷èò íåò" << endl;
+					cout << "Ð—Ð½Ð°Ñ‡Ð¸Ñ‚ Ð½ÐµÑ‚" << endl;
 				}
 			}
 			counter++;
@@ -322,13 +322,13 @@ int main()
 
 		plus_books();
 		cout << endl;
-		cout << "Íóæíî áîëüøå êíèã?" << endl;
+		cout << "ÐÑƒÐ¶Ð½Ð¾ Ð±Ð¾Ð»ÑŒÑˆÐµ ÐºÐ½Ð¸Ð³?" << endl;
 		cout << "1 for yes   or   0 for no" << endl;
 		cin >> exit;
 		if (exit != 0 && exit != 1)
 		{
 			exit = 0;
-			cout << "Çíà÷èò íåò" << endl;
+			cout << "Ð—Ð½Ð°Ñ‡Ð¸Ñ‚ Ð½ÐµÑ‚" << endl;
 		}
 	}
 	
