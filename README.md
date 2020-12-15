@@ -9,5 +9,8 @@
 1. [Двусвязный список](https://github.com/111nat/unn-sum-winter-2020/blob/master/Двусвязный%20список/Source.cpp)
 1. [Очередь](https://github.com/111nat/unn-sum-winter-2020/blob/master/Очередь/Source.cpp)
 1. [Матрица](https://github.com/111nat/unn-sum-winter-2020/blob/master/Матрицы/Source.cpp)
+1. [Hierarchical_List](https://github.com/111nat/unn-sum-winter-2020/blob/master/Hierarchical_List/Project1/Source.cpp)
+    1.[HP](https://github.com/111nat/unn-sum-winter-2020/blob/master/Hierarchical_List/Project1/HP.txt)
+    1.[myStory](https://github.com/111nat/unn-sum-winter-2020/blob/master/Hierarchical_List/Project1/myStory.txt)
 
 ## [Отчеты](https://github.com/111nat/unn-sum-winter-2020/tree/master/Отчеты)
