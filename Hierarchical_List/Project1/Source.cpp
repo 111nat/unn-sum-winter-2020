@@ -2,10 +2,10 @@
 #include <fstream>
 using namespace std;
 
-string open_file()
+string open_file(string path)
 {
 	ifstream harry_1;
-	harry_1.open("Harry_Potter_1.txt");
+	harry_1.open(path);
 	string book = string();
 
 	if (!harry_1.is_open())
@@ -44,20 +44,29 @@ class hierarchy
 		}
 	};
 
-	int size_chapter;
+	int size_book;
 	int size_string;
 	Node* head;
 
 public:
 	hierarchy();
+	int Get_size_book()
+	{
+		return size_book;
+	};
+	int Get_size_string()
+	{
+		return size_string;
+	};
 	void push_back(string data);
-	void print_chapter(int chapter);
-	void print_string(int chapter, int string);
+	string print_book(int book);
+	string print_string(int book, int string);
+	
 };
 
 hierarchy::hierarchy()
 {
-	size_chapter = 0;
+	size_book = 0;
 	size_string = 0;
 	head = nullptr;
 }
@@ -104,15 +113,61 @@ void hierarchy::push_back(string data)
 		}
 		
 	}
-	size_chapter++;
+	else
+	{
+		Node* current = this->head;
+
+		while (current->pNext != nullptr)
+		{
+			current = current->pNext;
+		}
+
+		current->pNext = new Node(data);
+
+		Node* currentt = current->pNext;
+
+
+		for (int i = 0; i < data.size();)
+		{
+			string stri = string();
+			for (int j = i; j < data.size(); j++, i++)
+			{
+				if (data[j] != '\n')
+				{
+					stri.push_back(data[j]);
+				}
+				else
+				{
+					i++;
+					j++;
+					size_string++;
+					break;
+				}
+			}
+			if (size_string == 1)
+			{
+				currentt->pDown = new Node(stri);
+				currentt = currentt->pDown;
+			}
+			else
+			{
+				while (currentt->pNext != nullptr)
+				{
+					currentt = currentt->pNext;
+				}
+				currentt->pNext = new Node(stri);
+			}
+		}
+	}
+	size_book++;
 }
 
-void hierarchy::print_chapter(int chapter)
+string hierarchy::print_book(int book)
 {
-	if (chapter > size_chapter)
+	if (book > size_book)
 	{
 		cout << "Ошибка! Глав меньше." << endl;
-		cout << "Всего глав: " << size_chapter << endl;
+		cout << "Всего глав: " << size_book << endl;
 	}
 	else
 	{
@@ -120,10 +175,10 @@ void hierarchy::print_chapter(int chapter)
 		Node* current = this->head;
 		while (current != nullptr)
 		{
-			if (counter == chapter)
+			if (counter == book)
 			{
 				cout << current->data << endl;
-				return void();
+				return current->data;
 			}
 			current = current->pNext;
 			counter++;
@@ -132,16 +187,16 @@ void hierarchy::print_chapter(int chapter)
 	}
 }
 
-void hierarchy::print_string(int chapter, int string)
+string hierarchy::print_string(int book, int stringg)
 {
-	if (chapter > size_chapter)
+	if (book > size_book)
 	{
-		cout << "Ошибка! Глав меньше." << endl;
-		cout << "Всего глав: " << size_chapter << endl;
+		cout << "Ошибка! Книг меньше." << endl;
+		cout << "Всего Книг: " << size_book << endl;
 	}
 	else
 	{
-		if (string > size_string)
+		if (stringg > size_string)
 		{
 			cout << "Ошибка! Строк меньше." << endl;
 			cout << "Всего строк: " << size_string << endl;
@@ -154,21 +209,21 @@ void hierarchy::print_string(int chapter, int string)
 
 			while (current != nullptr)
 			{
-				if (counter_c == chapter)
+				if (counter_c == book)
 				{
 					current = current->pDown;
 					while (current != nullptr)
 					{
-						if (counter_s == string)
+						if (counter_s == stringg)
 						{
 							cout << current->data << endl;
-							return void();
+							return current->data;
 						}
 						current = current->pNext;
 						counter_s++;
 					}
 					cout << "Ошибка! Строка не найдена" << endl;
-					return void();
+					return string();
 				}
 				current = current->pNext;
 				counter_c++;
@@ -187,12 +242,97 @@ void hierarchy::print_string(int chapter, int string)
 
 
 
+hierarchy list;
+
+void plus_books()
+{
+	string PATH = string();
+	cout << "Введите книгу .txt" << endl;
+	cin >> PATH;
+	PATH = PATH + ".txt";
+	
+	if (open_file(PATH) != string())
+	{
+		list.push_back(open_file(PATH));
+	}
+}
+
+void work_with_hierarchy()
+{
+	int Exit = 1;
+	while (Exit)
+	{
+		cout << endl << endl;
+		int choose;
+		cout << "1. print book. (index book)" << endl;
+		cout << "2. print string. (index book, index string)" << endl;
+		cout << "0. Exit." << endl;
+		cin >> choose;
+		switch (choose)
+		{
+			case 1:
+				system("cls");
+				int index;
+				cout << "Enter index of book" << endl;
+				cin >> index;
+				list.print_book(index);
+				break;
+			case 2:
+				system("cls");
+				int index_f, index_s;
+				cout << "Enter index of book and index of string" << endl;
+				cin >> index_f;
+				cin >> index_s;
+				list.print_string(index_f, index_s);
+				break;
+			case 0:
+				Exit = 0;
+				break;
+			default:
+				break;
+		}
+	}
+}
+
 int main()
 {
 	setlocale(LC_ALL, "ru");
-	hierarchy first;
-	first.push_back(open_file());
-	first.print_string(1, 5);
+
+	int exit = 1;
+	int counter = 0;
+	
+	while (exit)
+	{
+		if (counter == 0)
+		{
+			if (open_file("HP.txt") != string())
+			{
+				cout << "Найден HP" << endl;
+				cout << "Продолжим?" << endl;
+				cout << "1 for yes   or   0 for no" << endl;
+				cin >> exit;
+				if (exit != 0 && exit != 1)
+				{
+					exit = 0;
+					cout << "Значит нет" << endl;
+				}
+			}
+			counter++;
+		}
+
+		plus_books();
+		cout << endl;
+		cout << "Нужно больше книг?" << endl;
+		cout << "1 for yes   or   0 for no" << endl;
+		cin >> exit;
+		if (exit != 0 && exit != 1)
+		{
+			exit = 0;
+			cout << "Значит нет" << endl;
+		}
+	}
+	
+	work_with_hierarchy();
 	
 	return 0;
 }
