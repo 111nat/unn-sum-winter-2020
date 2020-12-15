@@ -1,0 +1,10 @@
+#Игнорировать все
+*
+
+#Кроме .cpp и папок
+!*.cpp
+!*/
+
+#Кроме .gitignore и readme
+!README.md
+!.gitignore
