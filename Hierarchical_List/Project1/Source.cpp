@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <stack>
 using namespace std;
+
+stack<string> names;
 
 string open_file(string path)
 {
@@ -15,7 +18,7 @@ string open_file(string path)
 	else
 	{
 		cout << "Файл открыт!" << endl;
-		
+		names.push(path);
 		char ch;
 		while (harry_1.get(ch))
 		{
@@ -25,6 +28,97 @@ string open_file(string path)
 	
 	harry_1.close();
 	return book;
+}
+
+void open_file_rewrite(string new_string, int index_b)
+{
+	stack<string> right_names;
+	stack<string> helper;
+	while (!names.empty())
+	{
+		right_names.push(names.top());
+		helper.push(names.top());
+		names.pop();
+
+	}
+
+	while (!helper.empty())
+	{
+		names.push(helper.top());
+		helper.pop();
+	}
+
+	int counter = 1;
+	string path = string();
+	while (!right_names.empty())
+	{
+		if (counter == index_b)
+		{
+			path = right_names.top();
+			break;
+		}
+		counter++;
+		right_names.pop();
+	}
+
+	ofstream file;
+	file.open(path);
+	if (!file.is_open())
+	{
+		cout << "Ошибка открытия файла!" << endl;
+	}
+	else
+	{
+		file << new_string;
+	}
+	file.close();
+	return void();
+}
+
+void open_file_add(string new_string, int index_b)
+{
+	stack<string> right_names;
+	stack<string> helper;
+	while (!names.empty())
+	{
+		right_names.push(names.top());
+		helper.push(names.top());
+		names.pop();
+
+	}
+
+	while (!helper.empty())
+	{
+		names.push(helper.top());
+		helper.pop();
+	}
+
+	int counter = 1;
+	string path = string();
+	while (!right_names.empty())
+	{
+		if (counter == index_b)
+		{
+			path = right_names.top();
+			break;
+		}
+		counter++;
+		right_names.pop();
+	}
+
+	ofstream file;
+	file.open(path, ofstream::app);
+	if (!file.is_open())
+	{
+		cout << "Ошибка открытия файла!" << endl;
+	}
+	else
+	{
+		file << "\n";
+		file << new_string;
+	}
+	file.close();
+	return void();
 }
 
 class hierarchy
@@ -55,6 +149,10 @@ public:
 	string print_book(int book);
 	string print_string(int book, int string);
 	string print_word(int book, int stringg, int word);
+
+	void changer_book(int index_book);
+	void changer_string(int index_book, int index_string);
+	void changer_word(int index_book, int index_string, int index_word);
 	
 };
 
@@ -387,6 +485,72 @@ string hierarchy::print_word(int book, int stringg, int word)
 	return string();
 }
 
+void hierarchy::changer_book(int index_book)
+{
+	Node* searcher = head;
+	int counter = 1;
+	while (searcher != nullptr)
+	{
+		if (counter == index_book)
+		{
+			string new_book = string();
+			cout << "Enter new book." << endl;
+			cin >> new_book;
+			open_file_rewrite(new_book, index_book);
+			int choose = 0;
+			while (1) {
+				cout << "Хотите продолжить на новой строке" << endl;
+				cout << "1 or 0" << endl;
+
+				cin >> choose;
+				if (choose == 1)
+				{
+					cout << "Enter continuation." << endl;
+					new_book = string();
+					cin >> new_book;
+					open_file_add(new_book, index_book);
+				}
+				else
+				{
+					Node* deleter = searcher;
+					while (1)
+					{
+						if (searcher->pDown == nullptr)
+						{
+							break;
+						}
+						while (searcher->pDown != nullptr)
+						{
+
+							deleter = deleter->pDown;
+						}
+						while (searcher->pNext != nullptr)
+						{
+							deleter = deleter->pNext;
+						}
+						delete deleter;
+						deleter = searcher;
+					}
+					searcher = head;
+					break;
+				}
+			}
+			return void();
+		}
+		searcher = searcher->pNext;
+		counter++;
+	}
+	cout << "Ошибка книга не найдена!" << endl;
+}
+
+void hierarchy::changer_string(int index_book, int index_string)
+{
+}
+
+void hierarchy::changer_word(int index_book, int index_string, int index_word)
+{
+}
+
 
 
 
@@ -424,6 +588,7 @@ void work_with_hierarchy()
 		cout << "2. print string. (index book, index string)" << endl;
 		cout << "3. print word. (index book, index string, index word)" << endl;
 		cout << "4. more books." << endl;
+		cout << "5. Rewrite book." << endl;
 		cout << "0. Exit." << endl;
 		cin >> choose;
 		switch (choose)
@@ -451,6 +616,12 @@ void work_with_hierarchy()
 				break;
 			case 4:
 				plus_books();
+				break;
+			case 5:
+				system("cls");
+				cout << "Enter index of book" << endl;
+				cin >> index_f;
+				list.changer_book(index_f);
 				break;
 			case 0:
 				Exit = 0;
