@@ -70,6 +70,8 @@ void open_file_rewrite(string new_string, int index_b)
 	else
 	{
 		file << new_string;
+		file << ' ';
+		file << "\n";
 	}
 	file.close();
 	return void();
@@ -114,8 +116,10 @@ void open_file_add(string new_string, int index_b)
 	}
 	else
 	{
-		file << "\n";
+		
 		file << new_string;
+		file << ' ';
+		file << "\n";
 	}
 	file.close();
 	return void();
@@ -149,6 +153,44 @@ public:
 	string print_book(int book);
 	string print_string(int book, int string);
 	string print_word(int book, int stringg, int word);
+
+	int get_size_books()
+	{
+		return size_book;
+	}
+
+	int get_size_string(int index_book)
+	{
+		Node* curent = head;
+		int counter = 1;
+		while (curent->pNext != nullptr)
+		{
+			if (counter == index_book)
+			{
+				if (curent->pDown != nullptr)
+				{
+					curent = curent->pDown;
+					int new_counter = 1;
+					while (curent->pNext != nullptr)
+					{
+						new_counter++;
+						curent = curent->pNext;
+					}
+					cout << "Кол-во строк: " << new_counter << "В книги: " << index_book << endl;
+					return new_counter;
+				}
+				else
+				{
+					cout << "Строк не найдено" << endl;
+					return int();
+				}
+			}
+			curent = curent->pNext;
+			counter++;
+		}
+		cout << "Error" << endl;
+		return int();
+	}
 
 	void changer_book(int index_book);
 	void changer_string(int index_book, int index_string);
@@ -513,25 +555,96 @@ void hierarchy::changer_book(int index_book)
 				else
 				{
 					Node* deleter = searcher;
+					Node* helper1 = searcher;
+					int counter1 = 0;
 					while (1)
 					{
 						if (searcher->pDown == nullptr)
 						{
 							break;
 						}
-						while (searcher->pDown != nullptr)
+						while (deleter->pDown != nullptr)
 						{
-
+							
+							
 							deleter = deleter->pDown;
+							if (deleter->pDown != nullptr)
+							{
+								helper1 = helper1->pDown;
+							}
 						}
-						while (searcher->pNext != nullptr)
+						
+						while (deleter->pNext != nullptr)
 						{
+							
+							if (counter1 == 0)
+							{
+								helper1 = helper1->pDown;
+							}
+							counter1 = 1;
+								
 							deleter = deleter->pNext;
+							if (deleter->pNext == nullptr)
+							{
+								break;
+
+							}
+
+							helper1 = helper1->pNext;
+							
 						}
+						
 						delete deleter;
+						
+						if (counter1 == 0)
+						{
+							helper1->pDown = nullptr;
+						}
+						else
+						{
+							helper1->pNext = nullptr;
+						}
+
 						deleter = searcher;
+						helper1 = searcher;
+						counter1 = 0;
 					}
-					searcher = head;
+					if (searcher == head)
+					{
+						head = head->pNext;
+						delete searcher;
+					}
+					else
+					{
+						Node* helper = head;
+						while (helper->pNext != searcher)
+						{
+							helper = helper->pNext;
+						}
+						helper->pNext = searcher->pNext;
+						delete searcher;
+					}
+					size_book--;//
+					counter = 1;
+					stack<string> helper;
+					while (!names.empty())
+					{
+						helper.push(names.top());
+						names.pop();
+					}
+					while (!helper.empty())
+					{
+						if (counter == index_book)
+						{
+							helper.pop();
+						}
+						if (!helper.empty())
+						{
+							counter++;
+							names.push(helper.top());
+							helper.pop();
+						}
+					}
 					break;
 				}
 			}
