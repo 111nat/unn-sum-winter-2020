@@ -1,13 +1,13 @@
 #include <iostream>
-#include <fstream>//для работы с файлами
+#include <fstream>//РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ С„Р°Р№Р»Р°РјРё
 #include <stack>
 #include <string>
 using namespace std;
 
-//хранилище имен .txt
+//С…СЂР°РЅРёР»РёС‰Рµ РёРјРµРЅ .txt
 stack<string> names;
 
-//открытие файла для чтения. Закидывает все в path
+//РѕС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° РґР»СЏ С‡С‚РµРЅРёСЏ. Р—Р°РєРёРґС‹РІР°РµС‚ РІСЃРµ РІ path
 string open_file(string path)
 {
 	ifstream harry_1;
@@ -16,11 +16,11 @@ string open_file(string path)
 	
 	if (!harry_1.is_open())
 	{
-		cout << "Ошибка открытия файла!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!" << endl;
 	}
 	else
 	{
-		cout << "Файл открыт!" << endl;
+		cout << "Р¤Р°Р№Р» РѕС‚РєСЂС‹С‚!" << endl;
 		names.push(path);
 		char ch;
 
@@ -34,7 +34,7 @@ string open_file(string path)
 	return book;
 }
 
-//Открывает файл для перезаписи
+//РћС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р» РґР»СЏ РїРµСЂРµР·Р°РїРёСЃРё
 void open_file_rewrite(string new_string, int index_b)
 {
 	stack<string> right_names;
@@ -72,7 +72,7 @@ void open_file_rewrite(string new_string, int index_b)
 
 	if (!file.is_open())
 	{
-		cout << "Ошибка открытия файла!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!" << endl;
 	}
 	else
 	{
@@ -85,7 +85,7 @@ void open_file_rewrite(string new_string, int index_b)
 	return void();
 }
 
-//Открывает файл для дописи
+//РћС‚РєСЂС‹РІР°РµС‚ С„Р°Р№Р» РґР»СЏ РґРѕРїРёСЃРё
 void open_file_add(string new_string, int index_b)
 {
 	stack<string> right_names;
@@ -124,7 +124,7 @@ void open_file_add(string new_string, int index_b)
 
 	if (!file.is_open())
 	{
-		cout << "Ошибка открытия файла!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!" << endl;
 	}
 	else
 	{
@@ -138,7 +138,7 @@ void open_file_add(string new_string, int index_b)
 	return void();
 }
 
-//Иерархический класс
+//РРµСЂР°СЂС…РёС‡РµСЃРєРёР№ РєР»Р°СЃСЃ
 class hierarchy
 {
 	class Node
@@ -162,20 +162,20 @@ class hierarchy
 	Node* head;
 
 public:
-	hierarchy();//конструктор
-	~hierarchy();//деструктор
-	void push_back(string data);//закидывание .txt файлов
-	string print_book(int book);//печатает всю книгу
-	string print_string(int book, int string);//печатает строку
-	string print_word(int book, int stringg, int word);//печатает слово
+	hierarchy();//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ
+	~hierarchy();//РґРµСЃС‚СЂСѓРєС‚РѕСЂ
+	void push_back(string data);//Р·Р°РєРёРґС‹РІР°РЅРёРµ .txt С„Р°Р№Р»РѕРІ
+	string print_book(int book);//РїРµС‡Р°С‚Р°РµС‚ РІСЃСЋ РєРЅРёРіСѓ
+	string print_string(int book, int string);//РїРµС‡Р°С‚Р°РµС‚ СЃС‚СЂРѕРєСѓ
+	string print_word(int book, int stringg, int word);//РїРµС‡Р°С‚Р°РµС‚ СЃР»РѕРІРѕ
 
-	//возвращает кол-во книг
+	//РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ РєРЅРёРі
 	int get_size_books()
 	{
 		return size_book;
 	}
 
-	//возвращает кол-во строк в определенной книге
+	//РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЃС‚СЂРѕРє РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РєРЅРёРіРµ
 	int get_size_string(int index_book)
 	{
 		Node* curent = head;
@@ -199,7 +199,7 @@ public:
 				}
 				else
 				{
-					cout << "Строка не найдена" << endl;
+					cout << "РЎС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 					return int();
 				}
 			}
@@ -210,7 +210,7 @@ public:
 		return int();
 	}
 
-	//возвращает кол-во слов в определенной книге и сторке
+	//РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»-РІРѕ СЃР»РѕРІ РІ РѕРїСЂРµРґРµР»РµРЅРЅРѕР№ РєРЅРёРіРµ Рё СЃС‚РѕСЂРєРµ
 	int get_size_word(int index_book, int index_string)
 	{
 		Node* curent = head;
@@ -244,7 +244,7 @@ public:
 							}
 							else
 							{
-								cout << "Слово не найдено." << endl;
+								cout << "РЎР»РѕРІРѕ РЅРµ РЅР°Р№РґРµРЅРѕ." << endl;
 								return int();
 							}
 						}
@@ -254,7 +254,7 @@ public:
 				}
 				else
 				{
-					cout << "Строка не найдена" << endl;
+					cout << "РЎС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 					return int();
 				}
 			}
@@ -265,13 +265,13 @@ public:
 		return int();
 	}
 
-	//изменяет книгу
+	//РёР·РјРµРЅСЏРµС‚ РєРЅРёРіСѓ
 	void changer_book(int index_book);
 
-	//изменяет строчку
+	//РёР·РјРµРЅСЏРµС‚ СЃС‚СЂРѕС‡РєСѓ
 	void changer_string(int index_book, int index_string);
 
-	//изменяет слово
+	//РёР·РјРµРЅСЏРµС‚ СЃР»РѕРІРѕ
 	void changer_word(int index_book, int index_string, int index_word);
 };
 
@@ -388,10 +388,10 @@ void hierarchy::push_back(string data)
 {
 	if (head == nullptr)
 	{
-		//Книги
+		//РљРЅРёРіРё
 		head = new Node(data);
 
-		//Строки
+		//РЎС‚СЂРѕРєРё
 		Node* current = head;
 		size_string = 0;
 
@@ -430,7 +430,7 @@ void hierarchy::push_back(string data)
 			}
 		}
 
-		//Слова
+		//РЎР»РѕРІР°
 		current = head->pDown;
 		int size_wordss = 0;
 
@@ -476,7 +476,7 @@ void hierarchy::push_back(string data)
 	}
 	else
 	{
-		//Книги
+		//РљРЅРёРіРё
 		Node* current = this->head;
 
 		while (current->pNext != nullptr)
@@ -486,7 +486,7 @@ void hierarchy::push_back(string data)
 
 		current->pNext = new Node(data);
 
-		//Строки
+		//РЎС‚СЂРѕРєРё
 		Node* currentt = current->pNext;
 		int size_stringg = 0;
 
@@ -526,7 +526,7 @@ void hierarchy::push_back(string data)
 			}
 		}
 
-		//Слова
+		//РЎР»РѕРІР°
 		current = head;
 
 		while (current->pNext != nullptr)
@@ -585,15 +585,15 @@ string hierarchy::print_book(int book)
 {
 	if (book > size_book)
 	{
-		cout << "Ошибка! Книг меньше." << endl;
-		cout << "Всего книг: " << size_book << endl;
+		cout << "РћС€РёР±РєР°! РљРЅРёРі РјРµРЅСЊС€Рµ." << endl;
+		cout << "Р’СЃРµРіРѕ РєРЅРёРі: " << size_book << endl;
 	}
 	else
 	{
 		int counter = 1;
 		Node* current = this->head;
 
-		//поиск книги
+		//РїРѕРёСЃРє РєРЅРёРіРё
 		while (current != nullptr)
 		{
 			if (counter == book)
@@ -605,7 +605,7 @@ string hierarchy::print_book(int book)
 			current = current->pNext;
 			counter++;
 		}
-		cout << "Ошибка! Глава не найдена" << endl;
+		cout << "РћС€РёР±РєР°! Р“Р»Р°РІР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 	}
 	return string();
 }
@@ -614,15 +614,15 @@ string hierarchy::print_string(int book, int stringg)
 {
 	if (book > size_book)
 	{
-		cout << "Ошибка! Книг меньше." << endl;
-		cout << "Всего Книг: " << size_book << endl;
+		cout << "РћС€РёР±РєР°! РљРЅРёРі РјРµРЅСЊС€Рµ." << endl;
+		cout << "Р’СЃРµРіРѕ РљРЅРёРі: " << size_book << endl;
 	}
 	else
 	{
 		if (stringg > size_string)
 		{
-			cout << "Ошибка! Строк меньше." << endl;
-			cout << "Всего строк: " << size_string << endl;
+			cout << "РћС€РёР±РєР°! РЎС‚СЂРѕРє РјРµРЅСЊС€Рµ." << endl;
+			cout << "Р’СЃРµРіРѕ СЃС‚СЂРѕРє: " << size_string << endl;
 		}
 		else
 		{
@@ -630,14 +630,14 @@ string hierarchy::print_string(int book, int stringg)
 			int counter_s = 1;
 			Node* current = this->head;
 
-			//поиск книги
+			//РїРѕРёСЃРє РєРЅРёРіРё
 			while (current != nullptr)
 			{
 				if (counter_b == book)
 				{
 					current = current->pDown;
 
-					//поиск строки
+					//РїРѕРёСЃРє СЃС‚СЂРѕРєРё
 					while (current != nullptr)
 					{
 						if (counter_s == stringg)
@@ -650,14 +650,14 @@ string hierarchy::print_string(int book, int stringg)
 						counter_s++;
 					}
 
-					cout << "Ошибка! Строка не найдена" << endl;
+					cout << "РћС€РёР±РєР°! РЎС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 					return string();
 				}
 
 				current = current->pNext;
 				counter_b++;
 			}
-			cout << "Ошибка! Книга не найдена" << endl;
+			cout << "РћС€РёР±РєР°! РљРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 		}
 	}
 	return string();
@@ -667,8 +667,8 @@ string hierarchy::print_word(int book, int stringg, int word)
 {
 	if (book > size_book)
 	{
-		cout << "Ошибка! Книг меньше." << endl;
-		cout << "Всего Книг: " << size_book << endl;
+		cout << "РћС€РёР±РєР°! РљРЅРёРі РјРµРЅСЊС€Рµ." << endl;
+		cout << "Р’СЃРµРіРѕ РљРЅРёРі: " << size_book << endl;
 	}
 	else
 	{
@@ -677,19 +677,19 @@ string hierarchy::print_word(int book, int stringg, int word)
 		int counter_w = 1;
 		Node* current = this->head;
 
-		//поиск книги
+		//РїРѕРёСЃРє РєРЅРёРіРё
 		while (current != nullptr)
 		{
 			if (counter_b == book)
 			{
 				current = current->pDown;
 
-				//поиск строки
+				//РїРѕРёСЃРє СЃС‚СЂРѕРєРё
 				while (current != nullptr)
 				{
 					if (counter_s == stringg)
 					{
-						//подсчет кол-ва слов в строчке
+						//РїРѕРґСЃС‡РµС‚ РєРѕР»-РІР° СЃР»РѕРІ РІ СЃС‚СЂРѕС‡РєРµ
 						int amount_of_words = 0;
 
 						for (int i = 0; i < current->data.size(); i++)
@@ -703,7 +703,7 @@ string hierarchy::print_word(int book, int stringg, int word)
 						amount_of_words++;
 						current = current->pDown;
 
-						//поиск слова
+						//РїРѕРёСЃРє СЃР»РѕРІР°
 						while (current != nullptr)
 						{
 							if (counter_w == word)
@@ -716,14 +716,14 @@ string hierarchy::print_word(int book, int stringg, int word)
 							counter_w++;
 						}
 
-						cout << "Ошибка! Слово не найдено" << endl;
-						cout << "Всего слов: " << amount_of_words << endl;
+						cout << "РћС€РёР±РєР°! РЎР»РѕРІРѕ РЅРµ РЅР°Р№РґРµРЅРѕ" << endl;
+						cout << "Р’СЃРµРіРѕ СЃР»РѕРІ: " << amount_of_words << endl;
 						return string();
 					}
 					current = current->pNext;
 					counter_s++;
 				}
-				cout << "Ошибка! Строка не найдена" << endl;
+				cout << "РћС€РёР±РєР°! РЎС‚СЂРѕРєР° РЅРµ РЅР°Р№РґРµРЅР°" << endl;
 				return string();
 			}
 			current = current->pNext;
@@ -738,7 +738,7 @@ void hierarchy::changer_book(int index_book)
 	Node* searcher = head;
 	int counter = 1;
 
-	//поиск книги
+	//РїРѕРёСЃРє РєРЅРёРіРё
 	while (searcher != nullptr)
 	{
 		if (counter == index_book)
@@ -746,19 +746,19 @@ void hierarchy::changer_book(int index_book)
 			string new_book = string();
 			cout << "Enter new book." << endl;
 
-			//выкидывает все из cin
+			//РІС‹РєРёРґС‹РІР°РµС‚ РІСЃРµ РёР· cin
 			while ((char)cin.get() != '\n')
 			{
 			}
 
-			//для записи с пробелами
+			//РґР»СЏ Р·Р°РїРёСЃРё СЃ РїСЂРѕР±РµР»Р°РјРё
 			getline(cin, new_book);
 			open_file_rewrite(new_book, index_book);
 			int choose = 0;
 
 			while (1) {
-				//добвка текста 
-				cout << "Хотите продолжить на новой строке" << endl;
+				//РґРѕР±РІРєР° С‚РµРєСЃС‚Р° 
+				cout << "РҐРѕС‚РёС‚Рµ РїСЂРѕРґРѕР»Р¶РёС‚СЊ РЅР° РЅРѕРІРѕР№ СЃС‚СЂРѕРєРµ" << endl;
 				cout << "1 or 0" << endl;
 				cin >> choose;
 
@@ -776,12 +776,12 @@ void hierarchy::changer_book(int index_book)
 				}
 				else
 				{
-					//удаление всего связанного с книгой, которую изменили
+					//СѓРґР°Р»РµРЅРёРµ РІСЃРµРіРѕ СЃРІСЏР·Р°РЅРЅРѕРіРѕ СЃ РєРЅРёРіРѕР№, РєРѕС‚РѕСЂСѓСЋ РёР·РјРµРЅРёР»Рё
 					Node* deleter = searcher;
 					Node* helper1 = searcher;
 					int counter1 = 0;
 
-					//само удаление нодов
+					//СЃР°РјРѕ СѓРґР°Р»РµРЅРёРµ РЅРѕРґРѕРІ
 					while (1)
 					{
 
@@ -833,7 +833,7 @@ void hierarchy::changer_book(int index_book)
 						counter1 = 0;
 					}
 
-					//удаление книги
+					//СѓРґР°Р»РµРЅРёРµ РєРЅРёРіРё
 					if (searcher == head)
 					{
 						head = head->pNext;
@@ -855,7 +855,7 @@ void hierarchy::changer_book(int index_book)
 					size_book--;
 					counter = 1;
 
-					//удаление имени файла из хранилища
+					//СѓРґР°Р»РµРЅРёРµ РёРјРµРЅРё С„Р°Р№Р»Р° РёР· С…СЂР°РЅРёР»РёС‰Р°
 					stack<string> helper;
 
 					while (!names.empty())
@@ -886,7 +886,7 @@ void hierarchy::changer_book(int index_book)
 		searcher = searcher->pNext;
 		counter++;
 	}
-	cout << "Ошибка книга не найдена!" << endl;
+	cout << "РћС€РёР±РєР° РєРЅРёРіР° РЅРµ РЅР°Р№РґРµРЅР°!" << endl;
 }
 
 void hierarchy::changer_string(int index_book, int index_string)
@@ -898,7 +898,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 		Node* first_string = head;
 		Node* book = head;
 
-		//поиск книги
+		//РїРѕРёСЃРє РєРЅРёРіРё
 		while (searcher != nullptr)
 		{
 			if (counter == index_book)
@@ -918,7 +918,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 			searcher = searcher->pDown;
 			int counter_s = 1;
 
-			//новая строка
+			//РЅРѕРІР°СЏ СЃС‚СЂРѕРєР°
 			string new_str = string();
 			cout << "Enter new string." << endl;
 
@@ -928,7 +928,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 
 			getline(cin, new_str);
 
-			//поиск строки
+			//РїРѕРёСЃРє СЃС‚СЂРѕРєРё
 			while (searcher != nullptr)
 			{
 				if (counter_s == index_string)
@@ -941,7 +941,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 				searcher = searcher->pNext;
 			}
 
-			//переписка всего файла
+			//РїРµСЂРµРїРёСЃРєР° РІСЃРµРіРѕ С„Р°Р№Р»Р°
 			open_file_rewrite(first_string->data, index_book);
 
 			while (first_string->pNext != nullptr)
@@ -950,7 +950,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 				open_file_add(first_string->data, index_book);
 			}
 
-			//удаление
+			//СѓРґР°Р»РµРЅРёРµ
 			Node* deleter = book;
 			Node* helper1 = book;
 			int counter1 = 0;
@@ -961,7 +961,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 				{
 					break;
 				}
-				//в самый низ
+				//РІ СЃР°РјС‹Р№ РЅРёР·
 				while (deleter->pDown != nullptr)
 				{
 					deleter = deleter->pDown;
@@ -972,7 +972,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 					}
 				}
 
-				//максимум права если есть
+				//РјР°РєСЃРёРјСѓРј РїСЂР°РІР° РµСЃР»Рё РµСЃС‚СЊ
 				while (deleter->pNext != nullptr)
 				{
 					if (counter1 == 0)
@@ -1006,7 +1006,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 				counter1 = 0;
 			}
 
-			//удаление книги
+			//СѓРґР°Р»РµРЅРёРµ РєРЅРёРіРё
 			if (book == head)
 			{
 				head = head->pNext;
@@ -1026,7 +1026,7 @@ void hierarchy::changer_string(int index_book, int index_string)
 			size_book--;
 			counter = 1;
 
-			//удаление название файла .txt
+			//СѓРґР°Р»РµРЅРёРµ РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р° .txt
 			stack<string> helper;
 
 			while (!names.empty())
@@ -1052,14 +1052,14 @@ void hierarchy::changer_string(int index_book, int index_string)
 		}
 		else
 		{
-			cout << "Строк меньше: " << get_size_string(counter) << endl;
+			cout << "РЎС‚СЂРѕРє РјРµРЅСЊС€Рµ: " << get_size_string(counter) << endl;
 			return void();
 		}
 	}
 	else
 	{
-		cout << "Книг меньше: " << get_size_books() << endl;
-		cout << "Или строк: " << get_size_string(index_book) << endl;
+		cout << "РљРЅРёРі РјРµРЅСЊС€Рµ: " << get_size_books() << endl;
+		cout << "РР»Рё СЃС‚СЂРѕРє: " << get_size_string(index_book) << endl;
 		return void();
 	}
 }
@@ -1077,7 +1077,7 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 		Node* first_string = head;
 		Node* book = head;
 
-		//поиск книги
+		//РїРѕРёСЃРє РєРЅРёРіРё
 		while (searcher != nullptr)
 		{
 			if (counter_b == index_book)
@@ -1087,7 +1087,7 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 				first_word = first_word->pDown;
 				first_string = first_string->pDown;
 
-				//поиск строки
+				//РїРѕРёСЃРє СЃС‚СЂРѕРєРё
 				while (searcher != nullptr)
 				{
 					if (counter_s == index_string)
@@ -1095,7 +1095,7 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 						first_word = first_word->pDown;
 						searcher = searcher->pDown;
 
-						//поиск слова
+						//РїРѕРёСЃРє СЃР»РѕРІР°
 						while (searcher != nullptr)
 						{
 							if (counter_w == index_word)
@@ -1106,7 +1106,7 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 								searcher->data = new_str;
 								this_string->data = string();
 								
-								//закидка в строку
+								//Р·Р°РєРёРґРєР° РІ СЃС‚СЂРѕРєСѓ
 								while (first_word != nullptr)
 								{
 									int i = 0;
@@ -1123,7 +1123,7 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 									first_word = first_word->pNext;
 								}
 								
-								//повтор кода
+								//РїРѕРІС‚РѕСЂ РєРѕРґР°
 								first_string->data.pop_back();
 								open_file_rewrite(first_string->data, index_book);
 
@@ -1248,21 +1248,21 @@ void hierarchy::changer_word(int index_book, int index_string, int index_word)
 	}
 	else
 	{
-		cout << "Кол-во книг: " << get_size_books() << endl;
-		cout << "Кол-во строк: " << get_size_string(index_book) << endl;
-		cout << "Кол-во слов: " << get_size_word(index_book, index_string) << endl;
+		cout << "РљРѕР»-РІРѕ РєРЅРёРі: " << get_size_books() << endl;
+		cout << "РљРѕР»-РІРѕ СЃС‚СЂРѕРє: " << get_size_string(index_book) << endl;
+		cout << "РљРѕР»-РІРѕ СЃР»РѕРІ: " << get_size_word(index_book, index_string) << endl;
 		return void();
 	}
 }
 
-//объявление объекта
+//РѕР±СЉСЏРІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р°
 hierarchy list;
 
-//добавка книг .txt
+//РґРѕР±Р°РІРєР° РєРЅРёРі .txt
 void plus_books()
 {
 	string PATH = string();
-	cout << "Введите книгу .txt" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РєРЅРёРіСѓ .txt" << endl;
 	cin >> PATH;
 	PATH = PATH + ".txt";
 	
@@ -1272,7 +1272,7 @@ void plus_books()
 	{
 		if (names.top() == PATH)
 		{
-			cout << "Такая книга уже есть." << endl;
+			cout << "РўР°РєР°СЏ РєРЅРёРіР° СѓР¶Рµ РµСЃС‚СЊ." << endl;
 			return void();
 		}
 		helper.push(names.top());
@@ -1289,7 +1289,7 @@ void plus_books()
 	
 }
 
-//интерфейс
+//РёРЅС‚РµСЂС„РµР№СЃ
 void work_with_hierarchy()
 {
 	int Exit = 1;
