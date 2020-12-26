@@ -290,6 +290,11 @@ hierarchy::~hierarchy()
 		Node* deleter = head;
 		Node* helper = head;
 
+		if (deleter == nullptr)
+		{
+			break;
+		}
+
 		while (deleter->pNext != nullptr)
 		{
 			deleter = deleter->pNext;
