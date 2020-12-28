@@ -104,6 +104,38 @@ Set& Set::operator|=(int n)
 	return *this;
 }
 
+Set& Set::operator|=(const Set& other)
+{
+	if (other.minElem != minElem || other.maxElem != maxElem)
+	{
+		cout << "Error" << endl;
+	}
+	else
+	{
+		for (int i = 0; i < numWords; i++)
+		{
+			elems[i] |= other.elems[i];
+		}
+	}
+	return *this;
+}
+
+Set& Set::operator&=(const Set& other)
+{
+	if (other.minElem != minElem || other.maxElem != maxElem)
+	{
+		cout << "Error" << endl;
+	}
+	else
+	{
+		for (int i = 0; i < numWords; i++)
+		{
+			elems[i] &= other.elems[i];
+		}
+	}
+	return *this;
+}
+
 
 
 
@@ -116,6 +148,10 @@ Set& Set::operator|=(int n)
 int main()
 {
 	Set a;
+	Set b;
 	a |= 4;
+	a |= 5;
+	b |= 5;
+	a &= b;
 	return 0;
 }
