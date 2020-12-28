@@ -11,11 +11,6 @@ class Set
 	WORD* elems;
 	int numWords;
 
-	/*friend const Set& operator|(const Set& s1, const Set& s2);
-	friend const Set& operator&(const Set& s1, const Set& s2);
-	friend const Set& operator-(const Set& s1, const Set& s2);
-	friend const Set& operator-(const Set& s);*/
-
 public:
 	WORD getWord(int n);
 
@@ -219,6 +214,7 @@ int main()
 	a |= 3;
 	a |= 5;
 	a |= 1;
+	((a |= 2) |= 3) |= 6;
 	//a -= 1;
 	PrintSet(a);
 	PrintSet(a);
