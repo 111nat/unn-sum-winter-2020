@@ -182,7 +182,7 @@ public:
 		else
 		{
 			cout << "size != other.size" << endl;
-			return T();
+			//return T();
 		}
 	}
 };
@@ -210,8 +210,8 @@ public:
 			arr[i] = new T[line_column];
 		}
 		
-		this->line = 0;
-		this->column = 0;
+		this->line = line_column;
+		this->column = line_column;
 	}
 	Matrix(int line, int column)
 	{
@@ -420,14 +420,42 @@ public:
 		}
 		return stream;
 	}
-	friend istream& operator>>(istream& stream, const Matrix& other)
+	friend istream& operator>>(istream& stream,  Matrix& other)
 	{
-		for (int i = 0; i < other.line; i++) {
-			for (int j = 0; j < other.column; j++) {
-				stream >> other.arr[i][j];
+		if (other.arr != nullptr)
+		{
+
+
+			for (int i = 0; i < other.line; i++) {
+				for (int j = 0; j < other.column; j++) {
+					stream >> other.arr[i][j];
+				}
+			}
+			return stream;
+		}
+		else
+		{
+			Vector<T> vec;
+
+			other.arr = new T * [vec.GetSize()];
+
+			for (int i = 0; i < vec.GetSize(); i++)
+			{
+				other.arr[i] = new T[vec.GetSize()];
+			}
+
+			other.line = vec.GetSize();
+			other.column = vec.GetSize();
+
+			for (int i = 0; i < vec.GetSize(); i++)
+			{
+				cin >> vec;
+				for (int j = 0; j < vec.GetSize(); j++)
+				{
+					other.arr[i][j] = vec[j];
+				}
 			}
 		}
-		return stream;
 	}
 
 	
@@ -437,7 +465,11 @@ public:
 int main()
 {
 	
-	Matrix<int> art(3, 3);
+
+	Matrix<int> a;
+	cin >> a;
+	cout << a;
+	/*Matrix<int> art(3, 3);
 	cin >> art;
 	cout << art << endl;
 	Matrix<int> lol(3, 4);
@@ -447,7 +479,7 @@ int main()
 	Matrix<int> jo = art * lol;
 	
 	cout << jo;
-	cout << (art != lol);
+	cout << (art != lol);*/
 	
 	return 0;
 }
