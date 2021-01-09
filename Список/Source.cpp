@@ -181,13 +181,38 @@ void List<T>::pop_back()
 
 int main() 
 {
-	List<nt> lst;
+	List<int> lst;
+	lst.push_back(1);
+	lst.push_back(2);
 	lst.push_back(3);
-	lst.push_back(12);
+	lst.push_back(4);
+	lst.push_back(5);
+	lst.push_back(6);
 	
-	cout << lst[0];
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		cout << lst[i] << endl;
+	}
+	cout << endl;
 
+	lst.insert(8, 3);
 
+	lst.push_front(7);
+
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		cout << lst[i] << endl;
+	}
+	cout << endl;
+
+	lst.pop_front();
+	lst.removeAt(3);
+	lst.pop_back();
+
+	for (int i = 0; i < lst.GetSize(); i++)
+	{
+		cout << lst[i] << endl;
+	}
 
 	return 0;
 }

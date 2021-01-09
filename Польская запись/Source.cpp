@@ -72,6 +72,7 @@ int check(string test)
 
 string pol(string str)
 {
+	int counter_brackets = 0;
 	stack<char> myStack;
 	string myString;
 	for (int i = 0; i < str.length(); i++)
@@ -80,10 +81,9 @@ string pol(string str)
 		{
 			if (!myStack.empty() && (myStack.top() == '*' || myStack.top() == '/'))
 			{
-				char saver = myStack.top();
+				myString.push_back(myStack.top());
 				myStack.pop();
 				myStack.push(str[i]);
-				myStack.push(saver);
 				continue;
 			}
 			myStack.push(str[i]);
@@ -98,12 +98,23 @@ string pol(string str)
 
 		if (str[i] == '(')
 		{
+			if (counter_brackets == 0 && !myStack.empty())
+			{
+				char helper = myStack.top();
+				myStack.pop();
+				myString.push_back(myStack.top());
+				myStack.pop();
+				myStack.push(helper);
+			}
 			myStack.push(str[i]);
+			counter_brackets++;
 			continue;
 		}
 
 		if (str[i] == ')')
 		{
+			counter_brackets--;
+
 			while (myStack.top() != '(')
 			{
 				myString.push_back(myStack.top());
@@ -113,6 +124,10 @@ string pol(string str)
 
 			while (!myStack.empty())
 			{
+				if (myStack.top() == '(')
+				{
+					break;
+				}
 				myString.push_back(myStack.top());
 				myStack.pop();
 			}
@@ -199,6 +214,34 @@ int result(string str)
 
 int main()
 {
+	string example = "(5*(7-2))+2-(2*4+1)"; //18
+	
+	if (check(example) == 0)
+	{
+		cout << result(pol(example));
+	}
+	cout << endl;
 
+	string another_exampler = "(1+2-4*(3-1))";//-5
+
+	if (check(example) == 0)
+	{
+		cout << result(pol(another_exampler));
+	}
+	cout << endl<<endl;
+
+	string fail_brack1 = "((1+2)";
+	string fail_brack2 = "(1+2))";
+	check(fail_brack1);
+	check(fail_brack2);
+	cout << endl;
+
+	string fail_double_sign1 = "2**3";
+	string fail_double_sign2 = "2--3";
+	string fail_double_sign3 = "2++3";
+	check(fail_double_sign1);
+	check(fail_double_sign2);
+	check(fail_double_sign3);
+	cout << endl;
 	return 0;
 }

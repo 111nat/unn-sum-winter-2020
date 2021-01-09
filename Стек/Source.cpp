@@ -72,6 +72,7 @@ T Stack<T>::Top()
 	else
 	{
 		cout << "Stack is empty" << endl;
+		return T();
 	}
 }
 
@@ -111,8 +112,28 @@ void Stack<T>::print()
 
 int main()
 {
-	Stack<int> sta(2);
+	Stack<int> sta(5);
+	sta.Push(1);
+	sta.Push(2);
 	sta.Push(3);
-	cout << sta.Top();
+	sta.Push(4);
+	sta.Push(5);
+	sta.print();
+	cout << endl;
+	cout << sta.isEmpty() << endl;
+	cout << sta.isFull() << endl;
+	cout << sta.Top() << endl;
+	cout << endl;
+	sta.pop();
+	sta.print();
+	cout << endl;
+	sta.pop();
+	sta.pop();
+	sta.pop();
+	sta.pop();
+	cout << sta.isEmpty() << endl;
+	cout << sta.isFull() << endl;
+	cout << sta.Top() << endl;
+	sta.pop();
 	return 0;
 }

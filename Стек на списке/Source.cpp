@@ -114,8 +114,9 @@ int main()
 	lst.push_front(4);
 	cout << lst.GetSize() << endl;
 	cout << lst.pop_front() << endl;
-	cout << "xd" << endl;
+	cout << endl;
 	lst.print();
+	
 
 
 
